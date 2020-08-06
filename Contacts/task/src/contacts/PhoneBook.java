@@ -1,9 +1,10 @@
 package contacts;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhoneBook {
+public class PhoneBook implements Serializable {
     List<Contact> contacts;
 
     PhoneBook() {
@@ -12,7 +13,7 @@ public class PhoneBook {
 
     public void add(Contact contact) {
         contacts.add(contact);
-        System.out.println("The record added.");
+//        System.out.println("The record added.");
     }
 
     public void remove(int num) {
@@ -28,19 +29,29 @@ public class PhoneBook {
         return this.contacts;
     }
 
-    public void setCName(int num, String name) {
-        contacts.get(num).setName(name);
+    public void setField(int num, String name, String value) {
+        Contact c = contacts.get(num);
+        c.setField(name, value);
+        c.setEdited();
         System.out.println("The record updated!");
     }
 
-    public void setCSurname(int num, String surname) {
-        contacts.get(num).setSurname(surname);
-        System.out.println("The record updated!");
+    public String listActions(int num) {
+        return contacts.get(num).getActions();
     }
 
     public void setCPhone(int num, String phone) {
         contacts.get(num).setPhone(phone);
+        contacts.get(num).setEdited();
         System.out.println("The record updated!");
+    }
+
+    public void info(int num) {
+        contacts.get(num).getInfo();
+    }
+
+    public boolean isPerson (int num) {
+        return contacts.get(num).isPerson();
     }
 
 }

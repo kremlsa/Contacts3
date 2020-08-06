@@ -195,8 +195,6 @@ topics:
   - title: Runtime type checking
     theory_id: 3571
   3:
-  - title: Computer programming
-    theory_id: 8739
   - title: What are streams
     theory_id: 5533
   - title: Hierarchy of exceptions
